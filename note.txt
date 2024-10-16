@@ -1,0 +1,7 @@
+    public function __construct()
+    {
+        if (isset($_SESSION['roles'])) {
+            $this->roles = unserialize($_SESSION['roles']);
+            $this->nextId = count($this->roles) + 1;
+        }
+    }
