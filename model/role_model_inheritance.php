@@ -1,30 +1,23 @@
 <?php
-class Role
-{
-    protected $role_name;
-    protected $role_description;
+require_once './domain_object/node_roleForModel.php';
 
-    public function __construct($name, $description)
+class UserRole extends RoleModel
+{
+    protected $role_gaji;
+
+    public function __construct($role_id, $role_name, $role_description, $role_status, $role_gaji)
     {
-        $this->role_name = $name;
-        $this->role_description = $description;
+        $this->role_id = $role_id;
+        $this->role_name = $role_name;
+        $this->role_description = $role_description;
+        $this->role_status = $role_status;
+        $this->role_gaji = $role_gaji;
+    }
+
+    public function cetakRole()
+    {
+        $this->cetakRoleInfo();
+        echo "Role Gaji: " . $this->role_gaji . "<br>";
     }
 }
 
-class AdminRole extends Role
-{
-    public $role_gaji;
-
-    public function __construct($name, $description, $gaji)
-    {
-        parent::__construct($name, $description);
-        $this->role_gaji = $gaji;
-    }
-
-    public function displayRole()
-    {
-        echo "Role name: " . $this->role_name . "<br>";
-        echo "Role description: " . $this->role_description . "<br>";
-        echo "Role salary: " . $this->role_gaji . "<br><br>";
-    }
-}

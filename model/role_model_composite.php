@@ -1,28 +1,48 @@
 <?php
-session_start();
 
-require_once './domain_object/node_role.php';
+require_once './domain_object/node_roleForModel.php';
 
-class Role_model
+class UserRole
 {
-    private $roles = [];
-    private $nextId = 1;
+    public $role;
+    public $gaji;
+    public $jam_kerja;
 
-
-    public function addRole($role_name, $role_description, $role_status)
+    public function __construct($role_id, $role_name, $role_description, $role_status, $gaji, $jam_kerja)
     {
-        $peran = new Role($this->nextId++, $role_name, $role_description, $role_status);
-        $this->roles[] = $peran;
-        $this->saveToSession();
+        $this->role = new RoleModel();
+        $this->role->role_id = $role_id;
+        $this->role->role_name = $role_name;
+        $this->role->role_description = $role_description;
+        $this->role->role_status = $role_status;
+        $this->gaji = $gaji;
+        $this->jam_kerja = $jam_kerja;
     }
 
-    private function saveToSession()
+    public function cetakRole()
     {
-        $_SESSION['roles'] = serialize($this->roles);
+        $this->role->cetakRoleInfo();
+        echo "Role Gaji : " . $this->gaji . "<br>";
+        echo "Role jam kerja : " . $this->jam_kerja . "<br>";
     }
+    // private $roles = [];
+    // private $nextId = 1;
 
-    public function getRoles()
-    {
-        return $this->roles;
-    }
+
+    // public function addRole($role_name, $role_description, $role_status)
+    // {
+    //     $peran = new Role($this->nextId++, $role_name, $role_description, $role_status);
+    //     $this->roles[] = $peran;
+    //     $this->saveToSession();
+    // }
+
+    // private function saveToSession()
+    // {
+    //     $_SESSION['roles'] = serialize($this->roles);
+    // }
+
+    // public function getRoles()
+    // {
+    //     return $this->roles;
+    // }
 }

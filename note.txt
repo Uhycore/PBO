@@ -5,3 +5,15 @@
             $this->nextId = count($this->roles) + 1;
         }
     }
+
+    $userRoles = [
+    new UserRole("Admin", "Administrator dengan akses penuh", 30000),
+    new UserRole("Super Admin", "Admin dengan hak istimewa lebih", 20000),
+    new UserRole("Editor", "Admin yang mengelola konten", 10000),
+];
+
+
+foreach ($userRoles as $user) {
+    $user->cetakRole();
+}
+?>
