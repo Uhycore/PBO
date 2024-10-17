@@ -9,7 +9,7 @@ $role->role_description = "Bisa semuanya";
 $role->role_status = "Active";
 
 
-$userRole = new UserRole($role, 50000, "09:00 - 17:00");
+$userRole = new UserRole($role, "09:00 - 17:00");
 
 
 $userRole->cetakUserRole();
