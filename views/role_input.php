@@ -1,3 +1,7 @@
+<?php
+    require_once 'model/role_model.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

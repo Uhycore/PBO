@@ -1,23 +1,22 @@
 <?php
-require_once './domain_object/node_roleForModel.php';
+require_once './domain_object/node_role.php';
 
-class UserRole extends RoleModel
+class UserRole extends Role
 {
     protected $role_gaji;
+    protected $role_jam_kerja;
 
-    public function __construct($role_id, $role_name, $role_description, $role_status, $role_gaji)
+    public function __construct($role_id, $role_name, $role_description, $role_status, $role_gaji,$role_jam_kerja)
     {
-        $this->role_id = $role_id;
-        $this->role_name = $role_name;
-        $this->role_description = $role_description;
-        $this->role_status = $role_status;
+        parent::__construct($role_id, $role_name, $role_description, $role_status);
+        $this->role_jam_kerja = $role_jam_kerja;
         $this->role_gaji = $role_gaji;
     }
 
     public function cetakRole()
     {
-        $this->cetakRoleInfo();
+        parent::cetakRoleInfo();
         echo "Role Gaji: " . $this->role_gaji . "<br>";
+        echo "Role jam kerja: " . $this->role_jam_kerja . "<br>";
     }
 }
-
