@@ -14,13 +14,13 @@ class Role
         $this->role_status = $role_status;
     }
 
-    public function cetakRoleInfo()
-    {
-        echo "Role ID: " . $this->role_id . "<br>";
-        echo "Role Name: " . $this->role_name . "<br>";
-        echo "Role Description: " . $this->role_description . "<br>";
-        echo "Role Status: " . $this->role_status . "<br>";
-    }
+    // public function cetakRoleInfo()
+    // {
+    //     echo "Role ID: " . $this->role_id . "<br>";
+    //     echo "Role Name: " . $this->role_name . "<br>";
+    //     echo "Role Description: " . $this->role_description . "<br>";
+    //     echo "Role Status: " . $this->role_status . "<br>";
+    // }
 
 }
 

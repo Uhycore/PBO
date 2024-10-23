@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +24,12 @@
         <div class="flex-1 p-8">
             <!-- Your main content goes here -->
             <?php
-            foreach ($obj_role as $role) {
-                echo "ID Role: " . $role->role_id . "<br>";
-                echo "Nama Role: " . $role->role_name . "<br>";
-                echo "Keterangan Role: " . $role->role_description . "<br>";
-                echo "Status Role: " . $role->role_status . "<br><br>";
-            }
+            // foreach ($obj_role as $role) {
+            //     echo "ID Role: " . $role->role_id . "<br>";
+            //     echo "Nama Role: " . $role->role_name . "<br>";
+            //     echo "Keterangan Role: " . $role->role_description . "<br>";
+            //     echo "Status Role: " . $role->role_status . "<br><br>";
+            // }
             ?>
         </div>
     </div>

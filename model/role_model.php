@@ -7,14 +7,17 @@ class ModelRole
     private $roles = [];
     private $nextId = 1;
 
+
     public function __construct()
     {
         if (isset($_SESSION['roles'])) {
             $this->roles = unserialize($_SESSION['roles']);
-            $this->nextId = count($this->roles) + 1;
-        }
 
-        $this->initializeDefaultRole();
+            $this->nextId = count($this->roles)+1;
+        } else {
+
+            $this->initializeDefaultRole();
+        }
     }
 
     public function initializeDefaultRole()
@@ -26,7 +29,7 @@ class ModelRole
 
     public function addRole($role_name, $role_description, $role_status)
     {
-        $role = new Role($this->nextId++, $role_name, $role_description, $role_status);
+        $role = new role($this->nextId++, $role_name, $role_description, $role_status);
         $this->roles[] = $role;
         $this->saveToSession();
     }
@@ -87,5 +90,4 @@ class ModelRole
         }
         return null;
     }
-    
 }
