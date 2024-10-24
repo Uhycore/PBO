@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,11 +53,15 @@
                                     <td class="w-1/6 py-3 px-4"><?php echo htmlspecialchars($role->role_status ? "active" : "inactive") ?></td>
                                     <td class="w-1/6 py-3 px-4">
                                         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2">
-                                            <a href="#">Update</a>
+
+                                            <a href="views/role_update.php?">Update</a>
                                         </button>
-                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-2">
-                                            <a href="#">Delete</a>
-                                        </button>
+                                        <form action="index.php?modul=role&fitur=delete" method="POST">
+                                            <input type="hidden" name="role_id" value="<?php echo $role->role_id; ?>">
+                                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mr-2">
+                                                Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 <?php } ?>
                                 </tr>

@@ -32,6 +32,22 @@ switch ($modul) {
 
                 break;
 
+            case 'delete':
+                $role_id = $_POST['role_id'];
+                $obj_roles->deleteRole($role_id);
+
+                header("Location: index.php?modul=role");
+                break;
+                
+            case 'update':
+                $role_id = $_POST['role_id'];
+                $role_name = $_POST['role_name'];
+                $role_description = $_POST['role_description'];
+                $role_status = $_POST['role_status'];
+                $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status);
+                header("Location: index.php?modul=role");
+
+
             default:
                 $Roles = $obj_roles->getAllRoles();
                 include 'views/role_list.php';

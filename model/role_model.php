@@ -13,7 +13,7 @@ class ModelRole
         if (isset($_SESSION['roles'])) {
             $this->roles = unserialize($_SESSION['roles']);
 
-            $this->nextId = count($this->roles)+1;
+            $this->nextId = count($this->roles) + 1;
         } else {
 
             $this->initializeDefaultRole();
@@ -58,6 +58,7 @@ class ModelRole
     {
         foreach ($this->roles as $role) {
             if ($role->role_id == $role_id) {
+                
                 $role->role_name = $role_name;
                 $role->role_description = $role_description;
                 $role->role_status = $role_status;
