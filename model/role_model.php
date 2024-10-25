@@ -1,5 +1,4 @@
 <?php
-
 require_once 'domain_object/node_role.php';
 
 class ModelRole
@@ -58,7 +57,7 @@ class ModelRole
     {
         foreach ($this->roles as $role) {
             if ($role->role_id == $role_id) {
-                
+
                 $role->role_name = $role_name;
                 $role->role_description = $role_description;
                 $role->role_status = $role_status;

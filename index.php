@@ -9,12 +9,12 @@ if (isset($_GET['modul'])) {
 }
 
 switch ($modul) {
+
     case 'dashboard':
         include 'views/kosong.php';
         break;
 
     case 'role':
-
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
         $obj_roles = new ModelRole();
 
@@ -38,14 +38,32 @@ switch ($modul) {
 
                 header("Location: index.php?modul=role");
                 break;
-                
+
+            case 'edit':
+                $role_id = $_GET['role_id'];
+                $obj_roles = $obj_roles->getRoleById($role_id);
+                include 'views/role_update.php';
+                break;
             case 'update':
                 $role_id = $_POST['role_id'];
                 $role_name = $_POST['role_name'];
                 $role_description = $_POST['role_description'];
                 $role_status = $_POST['role_status'];
-                $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status);
-                header("Location: index.php?modul=role");
+
+                $update_result = $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status);
+
+                if ($update_result) {
+                    echo "<script>
+                                alert('Data role berhasil diperbarui!');
+                                window.location.href = 'index.php?modul=role'; 
+                              </script>";
+                } else {
+                    echo "<script>
+                                alert('Gagal memperbarui data role. Silakan coba lagi.');
+                                window.location.href = 'index.php?modul=role&fitur=edit&role_id={$role_id}'; 
+                              </script>";
+                }
+                exit;
 
 
             default:
