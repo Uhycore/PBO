@@ -77,14 +77,36 @@ switch ($modul) {
     case 'user':
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
         $obj_user = new UserRole();
+        $obj_roles = new ModelRole();
 
         switch ($fitur) {
-            case 'add':
+            case 'input':
+                $users = $obj_user->getAllUsers();
+                $listRoleName = $obj_roles->getAllRoles();
+
+                include 'views/user_input.php';
                 break;
+            case 'add':
+
+                $username = $_POST['username'];
+                $role_name = $_POST['role_name'];
+                $obj_user->addUser($username, $role_name);
+                // Redirect after processing the form
+                header("Location: index.php?modul=user");
+                break;
+
+            case 'delete':
+                $user_id = $_POST['user_id'];
+                $obj_user->deleteUser($user_id);
+
+                header("Location: index.php?modul=user");
+                break;
+
 
             default:
 
                 $users = $obj_user->getAllUsers();
+
 
                 include 'views/user_list.php';
                 break;

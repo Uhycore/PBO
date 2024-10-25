@@ -23,7 +23,7 @@
             <div class="container mx-auto">
                 <div class="mb-4">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        <a href="MainEntryPoint.php?modul=user&fitur=add">Insert New User</a>
+                        <a href="index.php?modul=user&fitur=input">Insert New User</a>
                     </button>
                 </div>
 
@@ -65,11 +65,12 @@
                                                     Update
                                                 </a>
                                             </button>
-                                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                                <a href="MainEntryPoint.php?modul=role&fitur=delete&id=<?php echo htmlspecialchars($user->user_id); ?>">
+                                            <form action="index.php?modul=user&fitur=delete" method="POST">
+                                                <input type="hidden" name="user_id" value="<?php echo $user->user_id; ?>">
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
                                                     Delete
-                                                </a>
-                                            </button>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <?php }

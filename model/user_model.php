@@ -48,4 +48,17 @@ class UserRole
     {
         return $this->users;
     }
+
+    public function deleteUser($user_id)
+    {
+        foreach ($this->users as $key => $user) {
+            if ($user->user_id == $user_id) {
+                unset($this->users[$key]);
+                $this->users = array_values($this->users); // Reindex array
+                $this->saveToSession();
+                return true;
+            }
+        }
+        return false;
+    }
 }
