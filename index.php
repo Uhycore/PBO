@@ -1,5 +1,7 @@
 <?php
 require_once 'model/role_model.php';
+require_once 'model/user_model.php';
+
 session_start();
 
 if (isset($_GET['modul'])) {
@@ -72,4 +74,19 @@ switch ($modul) {
                 break;
         }
         break;
+    case 'user':
+        $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
+        $obj_user = new UserRole();
+
+        switch ($fitur) {
+            case 'add':
+                break;
+
+            default:
+
+                $users = $obj_user->getAllUsers();
+
+                include 'views/user_list.php';
+                break;
+        }
 }

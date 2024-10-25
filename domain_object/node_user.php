@@ -1,17 +1,16 @@
 <?php
+require_once 'node_role.php';
 
 class User
 {
-    public $userId;
-    public $name;
+    public $user_id;
     public $username;
     public $role;
 
-    public function __construct($userId, $name, $username, $role)
+    public function __construct($user_id, $username, Role $role)
     {
-        $this->userId = $userId;
-        $this->name = $name;
+        $this->user_id = $user_id;
         $this->username = $username;
-        $this->role = $role; 
+        $this->role = $role;
     }
 }

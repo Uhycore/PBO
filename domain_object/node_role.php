@@ -6,6 +6,7 @@ class Role
     public $role_description;
     public $role_status;
 
+
     public function __construct($role_id, $role_name, $role_description, $role_status)
     {
         $this->role_id = $role_id;
