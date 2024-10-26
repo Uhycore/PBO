@@ -27,28 +27,28 @@
                     <!-- Nama Role -->
                     <div class="mb-4">
                         <label for="role_name" class="block text-gray-700 text-sm font-bold mb-2">Nama Role:</label>
-                        <input type="text" id="role_name" name="role_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan Nama Role" required>
+                        <input type="text" id="role_name" name="role_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" placeholder="Masukkan Nama Role" required>
                     </div>
 
                     <!-- Role Deskripsi -->
                     <div class="mb-4">
                         <label for="role_description" class="block text-gray-700 text-sm font-bold mb-2">Role Deskripsi:</label>
-                        <textarea id="role_description" name="role_description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Masukkan Deskripsi Role" rows="3" required></textarea>
+                        <textarea id="role_description" name="role_description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" placeholder="Masukkan Deskripsi Role" rows="3" required></textarea>
                     </div>
 
                     <!-- Role Status -->
                     <div class="mb-4">
                         <label for="role_status" class="block text-gray-700 text-sm font-bold mb-2">Role Status:</label>
-                        <select id="role_status" name="role_status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <select id="role_status" name="role_status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" required>
                             <option value="">Pilih Status</option>
-                            <option value=1>Active</option>
-                            <option value=0>Inactive</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
                         </select>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200 ease-in-out">
                             Submit
                         </button>
                     </div>

@@ -20,29 +20,24 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-8">
-            <!-- Formulir Input Role -->
+            <!-- Formulir Input User -->
             <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-6 text-gray-800">Input Role</h2>
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">Input User</h2>
                 <form action="index.php?modul=user&fitur=add" method="POST">
-                    <!-- Nama User -->
-                    
-
                     <!-- Username -->
                     <div class="mb-4">
-                        <label for="username" class="block text-gray-700 text-sm font-bold mb-2">username:</label>
-                        <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="username user" required>
+                        <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+                        <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" placeholder="Masukkan Username" required>
                     </div>
 
-                    
-
-                    <!-- Role Status -->
+                    <!-- Role Name -->
                     <div class="mb-4">
-                        <label for="role_name" class="block text-gray-700 text-sm font-bold mb-2">Role Name</label>
-                        <select id="role_name" name="role_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                            <option value="">Pilih Status</option>
+                        <label for="role_name" class="block text-gray-700 text-sm font-bold mb-2">Role Name:</label>
+                        <select id="role_name" name="role_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" required>
+                            <option value="">Pilih Role</option>
                             <?php foreach ($listRoleName as $rolename) { ?>
-                                <option value=<?php echo htmlspecialchars($rolename->role_name) ?>>
-                                    <?php echo htmlspecialchars($rolename->role_name) ?>
+                                <option value="<?php echo htmlspecialchars($rolename->role_name); ?>">
+                                    <?php echo htmlspecialchars($rolename->role_name); ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -50,7 +45,7 @@
 
                     <!-- Submit Button -->
                     <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200 ease-in-out">
                             Submit
                         </button>
                     </div>

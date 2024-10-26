@@ -22,6 +22,9 @@ switch ($modul) {
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
 
         switch ($fitur) {
+            case 'input':
+                include 'views/role_input.php';
+                break;
             case 'add':
                 $role_name = $_POST['role_name'];
                 $role_description = $_POST['role_description'];
@@ -112,7 +115,7 @@ switch ($modul) {
             case 'update':
                 $user_id = $_POST['user_id'];
                 $username = $_POST['username'];
-                $role_name = $_POST['role_name']; 
+                $role_name = $_POST['role_name'];
 
                 $update_result = $obj_user->updateUser($user_id, $username, $role_name);
 
