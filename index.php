@@ -10,6 +10,8 @@ if (isset($_GET['modul'])) {
     $modul = 'dashboard';
 }
 
+$obj_roles = new ModelRole();
+$obj_user = new UserRole();
 switch ($modul) {
 
     case 'dashboard':
@@ -18,7 +20,6 @@ switch ($modul) {
 
     case 'role':
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
-        $obj_roles = new ModelRole();
 
         switch ($fitur) {
             case 'add':
@@ -76,8 +77,8 @@ switch ($modul) {
         break;
     case 'user':
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
-        $obj_user = new UserRole();
-        $obj_roles = new ModelRole();
+
+
 
         switch ($fitur) {
             case 'input':
@@ -102,10 +103,39 @@ switch ($modul) {
                 header("Location: index.php?modul=user");
                 break;
 
+            case 'edit':
+                $user_id = $_GET['user_id'];
+                $obj_user = $obj_user->getUserById($user_id);
+                $listRoleName = $obj_roles->getAllRoles();
+                include 'views/user_update.php';
+                break;
+            case 'update':
+                $user_id = $_POST['user_id'];
+                $username = $_POST['username'];
+                $role_name = $_POST['role_name']; 
+
+                $update_result = $obj_user->updateUser($user_id, $username, $role_name);
+
+                if ($update_result) {
+                    echo "<script>
+                                    alert('Data user berhasil diperbarui!');
+                                    window.location.href = 'index.php?modul=user'; 
+                                  </script>";
+                } else {
+                    echo "<script>
+                                    alert('Gagal memperbarui data user. Silakan coba lagi.');
+                                    window.location.href = 'index.php?modul=user&fitur=edit&user_id={$user_id}'; 
+                                  </script>";
+                }
+                break;
+
+
 
             default:
 
                 $users = $obj_user->getAllUsers();
+
+
 
 
                 include 'views/user_list.php';

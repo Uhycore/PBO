@@ -14,18 +14,19 @@ class UserRole
 
         if (isset($_SESSION['users'])) {
             $this->users = unserialize($_SESSION['users']);
-            $this->nextId = count($this->users) + 1;
-        } else {
-            $this->initializeDefaultUser();
+            $this->nextId = $this->getMaxRoleId() + 1;
+            // } else {
+            //     $this->initializeDefaultUser();
+            // }
         }
     }
 
-    public function initializeDefaultUser()
-    {
-        $this->addUser("Ustadz", "Admin");
-        $this->addUser("Santri", "User");
-        $this->addUser("Ustadzah", "Admin");
-    }
+    // public function initializeDefaultUser()
+    // {
+    //     $this->addUser("Ustadz", "Admin");
+    //     $this->addUser("Santri", "User");
+    //     $this->addUser("Ustadzah", "Admin");
+    // }
 
     public function addUser($username, $role_name)
     {
@@ -48,6 +49,34 @@ class UserRole
     {
         return $this->users;
     }
+    public function getUserById($user_id)
+    {
+        foreach ($this->users as $user) {
+            if ($user->user_id == $user_id) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    public function updateUser($user_id, $username, $role_name)
+    {
+        foreach ($this->users as $user) {
+            if ($user->user_id == $user_id) {
+                $user->username = $username;
+
+                $role = $this->modelRole->getRoleByName($role_name);
+
+                $user->role_name = $role;
+
+
+                $this->saveToSession();
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public function deleteUser($user_id)
     {
@@ -60,5 +89,15 @@ class UserRole
             }
         }
         return false;
+    }
+    private function getMaxRoleId()
+    {
+        $maxId = 0;
+        foreach ($this->users as $user) {
+            if ($user->user_id > $maxId) {
+                $maxId = $user->user_id;
+            }
+        }
+        return $maxId;
     }
 }

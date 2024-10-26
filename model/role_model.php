@@ -12,7 +12,8 @@ class ModelRole
         if (isset($_SESSION['roles'])) {
             $this->roles = unserialize($_SESSION['roles']);
 
-            $this->nextId = count($this->roles) + 1;
+
+            $this->nextId = $this->getMaxRoleId() + 1;
         } else {
 
             $this->initializeDefaultRole();
@@ -88,5 +89,16 @@ class ModelRole
             }
         }
         return null;
+    }
+
+    private function getMaxRoleId()
+    {
+        $maxId = 0;
+        foreach ($this->roles as $role) {
+            if ($role->role_id > $maxId) {
+                $maxId = $role->role_id;
+            }
+        }
+        return $maxId;
     }
 }

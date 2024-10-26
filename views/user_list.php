@@ -51,17 +51,17 @@
                                             <?php echo htmlspecialchars($user->username); ?>
                                         </td>
                                         <td class="py-3 px-4">
-                                            <?php echo htmlspecialchars($user->role->role_name); ?>
+                                            <?php echo htmlspecialchars($user->role_name->role_name); ?>
                                         </td>
                                         <td class="py-3 px-4">
-                                            <?php echo htmlspecialchars($user->role->role_description); ?>
+                                            <?php echo htmlspecialchars($user->role_name->role_description); ?>
                                         </td>
                                         <td class="py-3 px-4">
-                                            <?php echo htmlspecialchars($user->role->role_status ? "active" : "inactive"); ?>
+                                            <?php echo htmlspecialchars($user->role_name->role_status ? "active" : "inactive"); ?>
                                         </td>
                                         <td class="py-3 px-4">
                                             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2">
-                                                <a href="MainEntryPoint.php?modul=role&fitur=edit&id=<?php echo htmlspecialchars($user->user_id); ?>">
+                                                <a href="index.php?modul=user&fitur=edit&user_id=<?php echo htmlspecialchars($user->user_id); ?>">
                                                     Update
                                                 </a>
                                             </button>
