@@ -1,6 +1,7 @@
 <?php
 require_once 'model/role_model.php';
 require_once 'model/user_model.php';
+require_once 'model/barang_model.php';
 
 session_start();
 
@@ -12,6 +13,7 @@ if (isset($_GET['modul'])) {
 
 $obj_roles = new ModelRole();
 $obj_user = new UserRole();
+$obj_barang = new ModelBarang();
 switch ($modul) {
 
     case 'dashboard':
@@ -30,7 +32,7 @@ switch ($modul) {
                 $role_description = $_POST['role_description'];
                 $role_status = $_POST['role_status'];
                 $obj_roles->addRole($role_name, $role_description, $role_status);
-                // Redirect after processing the form
+
                 header("Location: index.php?modul=role");
 
 
@@ -142,6 +144,72 @@ switch ($modul) {
 
 
                 include 'views/user_list.php';
+                break;
+        }
+        break;
+    case 'barang':
+
+        $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
+
+
+        switch ($fitur) {
+            case 'input':
+                $Barang = $obj_barang->getAllBarangs();
+                include 'views/barang_input.php';
+                break;
+            case 'add':
+                $barang_nama = $_POST['barang_nama'];
+                $barang_kategori = $_POST['barang_kategori'];
+                $barang_stock = $_POST['barang_stock'];
+                $barang_harga = $_POST['barang_harga'];
+                $barang_description = $_POST['barang_description'];
+
+                $obj_barang->addBarang($barang_nama, $barang_kategori, $barang_stock, $barang_harga, $barang_description);
+
+                header("Location: index.php?modul=barang");
+                break;
+
+            case 'delete':
+                $barang_id = $_POST['barang_id'];
+                $obj_barang->deleteBarang($barang_id);
+
+                header("Location: index.php?modul=barang");
+                break;
+
+            case 'edit':
+                $barang_id = $_GET['barang_id'];
+                $obj_barang = $obj_barang->getBarangById($barang_id);
+                include 'views/barang_update.php';
+                break;
+
+
+
+            case 'update':
+                $barang_id = $_POST['barang_id'];
+                $barang_nama = $_POST['barang_nama'];
+                $barang_kategori = $_POST['barang_kategori'];
+                $barang_stock = $_POST['barang_stock'];
+                $barang_harga = $_POST['barang_harga'];
+                $barang_description = $_POST['barang_description'];
+
+                $update_result = $obj_barang->updateBarang($barang_id, $barang_nama, $barang_kategori, $barang_stock, $barang_harga, $barang_description);
+
+                if ($update_result) {
+                    echo "<script>
+                                    alert('Data user berhasil diperbarui!');
+                                    window.location.href = 'index.php?modul=barang'; 
+                                  </script>";
+                } else {
+                    echo "<script>  
+                                    alert('Gagal memperbarui data user. Silakan coba lagi.');
+                                    window.location.href = 'index.php?modul=barang&fitur=edit&barang_id={$barang_id}'; 
+                                  </script>";
+                }
+                break;
+
+            default:
+                $Barangs = $obj_barang->getAllBarangs();
+                include 'views/barang_list.php';
                 break;
         }
 }

@@ -20,7 +20,7 @@
             </a>
         </li>
         <li class="group">
-            <a href="#" class="flex items-center px-4 py-2 text-sm transition duration-200 hover:bg-gray-800 hover:text-purple-400">
+            <a href="index.php?modul=barang" class="flex items-center px-4 py-2 text-sm transition duration-200 hover:bg-gray-800 hover:text-purple-400">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3 text-purple-400 transition duration-200 group-hover:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4" />
                 </svg>
