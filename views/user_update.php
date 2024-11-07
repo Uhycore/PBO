@@ -36,9 +36,21 @@
                             placeholder="Masukkan nama role">
                     </div>
 
+                    <!-- Nama Role -->
+                    <div class="mb-4">
+                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Nama Role:</label>
+                        <input type="text" id="password" name="password"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                            value="<?php echo isset($obj_user->password) ? htmlspecialchars($obj_user->password) : ''; ?>"
+                            placeholder="Masukkan nama role">
+                    </div>
+
+
                     <!-- Role Status -->
                     <div class="mb-4">
                         <label for="role_name" class="block text-gray-700 text-sm font-bold mb-2">Role Name</label>
+
                         <select id="role_name" name="role_name"
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required>

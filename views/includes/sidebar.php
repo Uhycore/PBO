@@ -34,13 +34,16 @@
                 </svg>
                 <span>Menu Transaksi</span>
             </div>
-            <ul class="ml-8 mt-2 space-y-1 hidden group-hover:block">
-                <li class="px-4 py-1 text-sm hover:bg-gray-800 hover:text-gray-300 transition duration-200 cursor-pointer rounded">
-                    <a href="#">Insert Transaksi</a>
-                </li>
-                <li class="px-4 py-1 text-sm hover:bg-gray-800 hover:text-gray-300 transition duration-200 cursor-pointer rounded">
-                    <a href="#">List Transaksi</a>
-                </li>
+            <ul class="ml-8 mt-2 space-y-1 hidden group-hover:block"><a href="index.php?modul=transaksi&fitur=input">
+                    <li class="px-4 py-1 text-sm hover:bg-gray-800 hover:text-gray-300 transition duration-200 cursor-pointer rounded">
+                        Insert Transaksi
+                    </li>
+                </a>
+                <a href="index.php?modul=transaksi">
+                    <li class="px-4 py-1 text-sm hover:bg-gray-800 hover:text-gray-300 transition duration-200 cursor-pointer rounded">
+                        List Transaksi
+                    </li>
+                </a>
             </ul>
         </li>
     </ul>

@@ -34,6 +34,7 @@
                             <tr>
                                 <th class="py-3 px-4 uppercase font-semibold text-sm">User ID</th>
                                 <th class="py-3 px-4 uppercase font-semibold text-sm">Username</th>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm">password</th>
                                 <th class="py-3 px-4 uppercase font-semibold text-sm">Role Name</th>
                                 <th class="py-3 px-4 uppercase font-semibold text-sm">Role Description</th>
                                 <th class="py-3 px-4 uppercase font-semibold text-sm">Role Status</th>
@@ -49,6 +50,10 @@
                                         </td>
                                         <td class="py-3 px-4">
                                             <?php echo htmlspecialchars($user->username); ?>
+                                        </td>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <?php echo htmlspecialchars($user->password); ?>
                                         </td>
                                         <td class="py-3 px-4">
                                             <?php echo htmlspecialchars($user->role_name->role_name); ?>

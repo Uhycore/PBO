@@ -1,23 +1,27 @@
 <?php
-require_once 'model/role_model.php';
-require_once 'model/user_model.php';
+session_start();
 
-$userModel = new UserRole();
+require_once 'model/transaksi_model.php';
 
-try {
-    // Tambahkan pengguna dengan role yang tersedia
-    $userModel->addUser("aril", "Admin");
-    $userModel->addUser("budi", "User");
-    $userModel->addUser("cici", "Admin");
 
-    // Ambil semua user
-    $users = $userModel->getAllUsers();
-    foreach ($users as $user) {
-        echo "User ID: " . $user->user_id . "<br>";
-        echo "Username: " . $user->username . "<br>";
-        echo "Role: " . $user->role->role_name . "<br>";
-        echo "Role Description: " . $user->role->role_description . "<br><br>";
+// Buat instance ModelTransaksi
+$modelTransaksi = new ModelTransaksi();
+
+// TESTING: VIEW ALL TRANSAKSI SEBELUM PENAMBAHAN
+echo "<h3>TESTING: VIEW ALL TRANSAKSI SEBELUM PENAMBAHAN</h3>";
+$allTransaksi = $modelTransaksi->getAllTransaksi();
+
+if (count($allTransaksi) === 0) {
+    echo "Belum ada transaksi.<br><br>";
+} else {
+    foreach ($allTransaksi as $transaksi) {
+        echo "Transaksi ID: " . $transaksi->transaksi_id . "<br>";
+        echo "User: " . $transaksi->user->username . "<br>";
+        echo "User role: " . $transaksi->user->role_name->role_name . "<br>";
+        echo "Total Transaksi: Rp" . number_format($transaksi->transaksi_total, 2, ',', '.') . "<br>";
+        echo "Detail ID: " . $transaksi->detail_transaksi->detail_id . "<br>";
+        echo "Barang: " . $transaksi->detail_transaksi->barang->barang_nama . "<br>";
+        echo "Jumlah: " . $transaksi->detail_transaksi->detail_jumlah . "<br>";
+        echo "Subtotal: Rp" . number_format($transaksi->detail_transaksi->detail_subtotal, 2, ',', '.') . "<br><br>";
     }
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
 }

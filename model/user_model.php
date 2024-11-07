@@ -15,27 +15,26 @@ class UserRole
         if (isset($_SESSION['users'])) {
             $this->users = unserialize($_SESSION['users']);
             $this->nextId = $this->getMaxRoleId() + 1;
-            // } else {
-            //     $this->initializeDefaultUser();
-            // }
+        } else {
+            $this->initializeDefaultUser();
         }
     }
 
-    // public function initializeDefaultUser()
-    // {
-    //     $this->addUser("Ustadz", "Admin");
-    //     $this->addUser("Santri", "User");
-    //     $this->addUser("Ustadzah", "Admin");
-    // }
+    public function initializeDefaultUser()
+    {
+        $this->addUser("Aril", "aaaa", "Admin");
+        $this->addUser("Mubin", "aaaa", "Admin");
+        $this->addUser("Luqman", "aaaa", "Customer");
+    }
 
-    public function addUser($username, $role_name)
+    public function addUser($username, $password, $role_name)
     {
         $role = $this->modelRole->getRoleByName($role_name);
         if (!$role) {
             throw new Exception("Role tidak ditemukan.");
         }
 
-        $user = new User($this->nextId++, $username, $role);
+        $user = new User($this->nextId++, $username, $password, $role);
         $this->users[] = $user;
         $this->saveToSession();
     }
@@ -59,11 +58,24 @@ class UserRole
         return null;
     }
 
-    public function updateUser($user_id, $username, $role_name)
+    public function getUserByName($username)
+    {
+        foreach ($this->users as $user) {
+            if ($user->username == $username) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+
+
+    public function updateUser($user_id, $username, $password, $role_name)
     {
         foreach ($this->users as $user) {
             if ($user->user_id == $user_id) {
                 $user->username = $username;
+                $user->password = $password;
 
                 $role = $this->modelRole->getRoleByName($role_name);
 

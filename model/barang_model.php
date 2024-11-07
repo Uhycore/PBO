@@ -20,6 +20,7 @@ class ModelBarang
     {
         $this->addBarang("Sprite", "Soda", 10, 5000, "Tanpa gula");
         $this->addBarang("Fanta", "Soda", 10, 5000, "Tanpa gula");
+        $this->addBarang("Pepsi", "Soda", 10, 5000, "Tanpa gula");
         $this->addBarang("Coca-cola", "Soda", 10, 5000, "Dengan gula");
     }
 
@@ -50,6 +51,7 @@ class ModelBarang
         }
         return $maxId;
     }
+
     public function deleteBarang($barang_id)
     {
         foreach ($this->barangs as $key => $barang) {
@@ -66,6 +68,16 @@ class ModelBarang
     {
         foreach ($this->barangs as $barang) {
             if ($barang->barang_id == $barang_id) {
+                return $barang;
+            }
+        }
+        return null;
+    }
+
+    public function getBarangByName($barang_nama)
+    {
+        foreach ($this->barangs as $barang) {
+            if ($barang->barang_nama == $barang_nama) {
                 return $barang;
             }
         }
