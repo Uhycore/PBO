@@ -22,14 +22,14 @@ class UserRole
 
     public function initializeDefaultUser()
     {
-        $this->addUser("Aril", "aaaa", "Admin");
-        $this->addUser("Mubin", "aaaa", "Admin");
-        $this->addUser("Luqman", "aaaa", "Customer");
+        $this->addUser("Aril", "aaaa", 1);
+        $this->addUser("Mubin", "aaaa", 2);
+        $this->addUser("Luqman", "aaaa", 3);
     }
 
-    public function addUser($username, $password, $role_name)
+    public function addUser($username, $password, $role_id)
     {
-        $role = $this->modelRole->getRoleByName($role_name);
+        $role = $this->modelRole->getRoleById($role_id);
         if (!$role) {
             throw new Exception("Role tidak ditemukan.");
         }

@@ -29,13 +29,14 @@
                         <?php
                         if (!empty($customers)) {
                             foreach ($customers as $customer) {
-                                if ($customer->role_name->role_id == 3)
+                                if ($customer->role->role_id == 3)
                                     echo "<option value='{$customer->user_id}'>{$customer->username}</option>";
                             }
                         }
                         ?>
                     </select>
                 </div>
+               
 
                 <h3 class="text-xl font-semibold mb-2">Detail Barang</h3>
                 <div id="barangContainer">

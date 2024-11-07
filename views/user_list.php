@@ -56,13 +56,13 @@
                                             <?php echo htmlspecialchars($user->password); ?>
                                         </td>
                                         <td class="py-3 px-4">
-                                            <?php echo htmlspecialchars($user->role_name->role_name); ?>
+                                            <?php echo htmlspecialchars($user->role->role_name); ?>
                                         </td>
                                         <td class="py-3 px-4">
-                                            <?php echo htmlspecialchars($user->role_name->role_description); ?>
+                                            <?php echo htmlspecialchars($user->role->role_description); ?>
                                         </td>
                                         <td class="py-3 px-4">
-                                            <?php echo htmlspecialchars($user->role_name->role_status ? "Active" : "Inactive"); ?>
+                                            <?php echo htmlspecialchars($user->role->role_status ? "Active" : "Inactive"); ?>
                                         </td>
                                         <td class="py-3 px-4">
                                             <a href="index.php?modul=user&fitur=edit&user_id=<?php echo htmlspecialchars($user->user_id); ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2">

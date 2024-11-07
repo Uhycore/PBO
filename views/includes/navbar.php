@@ -17,7 +17,7 @@
                     <!-- Profil dengan Hover -->
                     <img src="views/includes/images/profil.jpg" alt="Profil" class="w-10 h-10 rounded-full border-2 border-blue-600 transition-transform transform hover:scale-105 shadow-sm">
                 </div>
-                <span class="text-gray-800 cursor-pointer hover:text-blue-600 transition duration-200 font-medium">Username</span>
+                <span class="text-gray-800 cursor-pointer hover:text-blue-600 transition duration-200 font-medium"><?= $_SESSION['username_login']->username ?></span>
                 <span class="text-gray-500 font-medium">Role</span>
 
                 <!-- Tombol Logout tanpa simbol -->

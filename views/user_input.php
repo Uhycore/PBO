@@ -37,11 +37,11 @@
 
                     <!-- Role Name -->
                     <div class="mb-4">
-                        <label for="role_name" class="block text-gray-700 text-sm font-bold mb-2">Role Name:</label>
-                        <select id="role_name" name="role_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" required>
+                        <label for="role_id" class="block text-gray-700 text-sm font-bold mb-2">Role Name:</label>
+                        <select id="role_id" name="role_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:border-blue-500" required>
                             <option value="">Pilih Role</option>
                             <?php foreach ($listRoleName as $rolename) { ?>
-                                <option value="<?php echo htmlspecialchars($rolename->role_name); ?>">
+                                <option value="<?php echo htmlspecialchars($rolename->role_id); ?>">
                                     <?php echo htmlspecialchars($rolename->role_name); ?>
                                 </option>
                             <?php } ?>

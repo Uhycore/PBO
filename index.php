@@ -10,7 +10,7 @@ session_start();
 if (isset($_GET['modul'])) {
     $modul = $_GET['modul'];
 } else {
-    $modul = 'dashboard';
+    $modul = 'login';
 }
 
 $obj_roles = new ModelRole();
@@ -20,8 +20,26 @@ $obj_transaksi = new ModelTransaksi();
 $obj_detail_transaksi = new ModelDetailTransaksi();
 switch ($modul) {
 
-    case 'dashboard':
-        include 'views/kosong.php';
+    case 'login':
+        $users = $obj_user->getAllUsers();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+
+            foreach ($users as $user) {
+                if ($user->username == $username && $user->password == $password && $user->role->role_id == 2) {
+                    header("Location: index.php?modul=role");
+                    $user = $obj_user->getUserByName($username);
+
+                    session_start();
+                    $_SESSION['username_login'] = $user;
+                }
+            }
+        }
+
+        include 'views/login.php'; // Tampilkan halaman login
         break;
 
     case 'role':
@@ -100,8 +118,8 @@ switch ($modul) {
 
                 $username = $_POST['username'];
                 $password = $_POST['password'];
-                $role_name = $_POST['role_name'];
-                $obj_user->addUser($username, $password, $role_name);
+                $role_id = $_POST['role_id'];
+                $obj_user->addUser($username, $password, $role_id);
                 // Redirect after processing the form
                 header("Location: index.php?modul=user");
                 break;
@@ -232,17 +250,12 @@ switch ($modul) {
                 break;
 
             case 'add':
-                if (isset($_POST['customer'])) {
-                    $user_id = $_POST['customer'];
-                } else {
-                    echo "User ID tidak ditemukan!";
-                    exit;
-                }
+                $user_id = $_POST['customer'];
+                $kasir_id = $_SESSION['username_login'];
 
                 $barang_ids = $_POST['barang'];
                 $jumlahs = $_POST['jumlah'];
 
-                // Prepare the detail_transaksis array
                 $detail_transaksis = [];
                 foreach ($barang_ids as $key => $barang_id) {
                     $barang = $obj_barang->getBarangById($barang_id);
@@ -250,9 +263,8 @@ switch ($modul) {
                     $detail_transaksis[] = $detail_transaksi;
                 }
 
-                // Pastikan bahwa detail_transaksis tidak kosong sebelum menambah transaksi
                 if (!empty($detail_transaksis)) {
-                    $obj_transaksi->addTransaksi($user_id, $detail_transaksis);
+                    $obj_transaksi->addTransaksi($user_id, $kasir_id->user_id, $detail_transaksis);
                     header("Location: index.php?modul=transaksi");
                 } else {
                     echo "Detail transaksi tidak lengkap!";
