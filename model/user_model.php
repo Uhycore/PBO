@@ -24,7 +24,9 @@ class UserRole
     {
         $this->addUser("Aril", "aaaa", 1);
         $this->addUser("Mubin", "aaaa", 2);
+        $this->addUser("mubin", "aaaa", 2);
         $this->addUser("Luqman", "aaaa", 3);
+        $this->addUser("Luqman1", "aaaa", 3);
     }
 
     public function addUser($username, $password, $role_id)

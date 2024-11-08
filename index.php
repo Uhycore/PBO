@@ -7,6 +7,10 @@ require_once 'model/detail_transaksi_model.php';
 
 session_start();
 
+if (!isset($_SESSION['username_login']) && $_GET['modul'] !== 'login') {
+    header("Location: index.php?modul=login");
+    exit;
+}
 if (isset($_GET['modul'])) {
     $modul = $_GET['modul'];
 } else {
@@ -18,9 +22,12 @@ $obj_user = new UserRole();
 $obj_barang = new ModelBarang();
 $obj_transaksi = new ModelTransaksi();
 $obj_detail_transaksi = new ModelDetailTransaksi();
+
+
 switch ($modul) {
 
     case 'login':
+
         $users = $obj_user->getAllUsers();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,16 +37,21 @@ switch ($modul) {
 
             foreach ($users as $user) {
                 if ($user->username == $username && $user->password == $password && $user->role->role_id == 2) {
+
                     header("Location: index.php?modul=role");
                     $user = $obj_user->getUserByName($username);
 
-                    session_start();
+
                     $_SESSION['username_login'] = $user;
                 }
             }
         }
 
-        include 'views/login.php'; // Tampilkan halaman login
+        include 'views/login.php';
+        break;
+
+    case 'logout':
+        header("Location: index.php");
         break;
 
     case 'role':
@@ -120,7 +132,6 @@ switch ($modul) {
                 $password = $_POST['password'];
                 $role_id = $_POST['role_id'];
                 $obj_user->addUser($username, $password, $role_id);
-                // Redirect after processing the form
                 header("Location: index.php?modul=user");
                 break;
 
@@ -259,7 +270,8 @@ switch ($modul) {
                 $detail_transaksis = [];
                 foreach ($barang_ids as $key => $barang_id) {
                     $barang = $obj_barang->getBarangById($barang_id);
-                    $detail_transaksi = new DetailTransaksi(4, $barang, $jumlahs[$key], $obj_detail_transaksi->getSubtotal($barang_id, $jumlahs[$key]));
+                    $id_transaksi = $obj_transaksi->getMaxTransaksiId();
+                    $detail_transaksi = new DetailTransaksi($id_transaksi++, $barang, $jumlahs[$key], $obj_detail_transaksi->getSubtotal($barang_id, $jumlahs[$key]));
                     $detail_transaksis[] = $detail_transaksi;
                 }
 
@@ -271,6 +283,7 @@ switch ($modul) {
                     exit;
                 }
                 break;
+
             default:
                 $transaksis = $obj_transaksi->getAllTransaksi();
                 // echo "<pre>";

@@ -20,7 +20,7 @@ class ModelDetailTransaksi
     }
     function getSubtotal($barang_id, $jumlah)
     {
-        // Assuming you have a method in your model to get the price of the item
+        
         $barang = $this->barang_model->getBarangById($barang_id);
         return $barang ? $barang->barang_harga * $jumlah : 0;
     }

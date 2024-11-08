@@ -70,7 +70,7 @@ class ModelTransaksi
         return $this->modelTransaksi;
     }
 
-    private function getMaxTransaksiId()
+    public function getMaxTransaksiId()
     {
         $maxId = 0;
         foreach ($this->modelTransaksi as $transaksi) {

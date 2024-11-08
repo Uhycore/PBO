@@ -1,3 +1,7 @@
+<?php
+include '../auth_cek.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +38,9 @@
                         <?php foreach ($transaksis as $transaksi) {
                             $total = is_numeric($transaksi->transaksi_total) ? $transaksi->transaksi_total : 0; ?>
                             <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                                <img src="views/includes/images/transaksi.jpg" style="width: 100%; max-width: 1000px;" />
+
+
                                 <div class="flex justify-between items-center mb-4">
                                     <span class="text-lg font-semibold text-gray-800"><?php echo htmlspecialchars($transaksi->transaksi_id); ?></span>
                                     <span class="text-gray-500 text-sm"><?php echo htmlspecialchars($transaksi->user->username); ?></span>

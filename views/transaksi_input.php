@@ -36,7 +36,7 @@
                         ?>
                     </select>
                 </div>
-               
+
 
                 <h3 class="text-xl font-semibold mb-2">Detail Barang</h3>
                 <div id="barangContainer">
@@ -79,8 +79,8 @@
         document.getElementById('addBarangBtn').addEventListener('click', function() {
             const barangContainer = document.getElementById('barangContainer');
             const newBarang = document.querySelector('.barang-item').cloneNode(true);
-            newBarang.querySelector('select[name="barang[]"]').value = ''; // Clear value
-            newBarang.querySelector('input[name="jumlah[]"]').value = ''; // Clear value
+            newBarang.querySelector('select[name="barang[]"]').value = '';
+            newBarang.querySelector('input[name="jumlah[]"]').value = '';
             barangContainer.appendChild(newBarang);
         });
 
